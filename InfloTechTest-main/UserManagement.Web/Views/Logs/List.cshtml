@@ -1,0 +1,51 @@
+@model UserManagement.Web.Models.Logs.LogListViewModel;
+
+<h2>
+    @if (!string.IsNullOrEmpty(Model.Forename) && !string.IsNullOrEmpty(Model.Surname))
+    {
+        <text>Logs for @Model.Forename @Model.Surname</text>
+    } 
+    else 
+    {
+        <text>Logs</text>
+    }
+</h2>
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>See More</th>
+                <th>Action</th>
+                <th>Target User Id</th>
+                <th>Details</th>
+                <th>Timestamp</th>
+                <th style="width: 1px;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr>
+                    <td>
+                        <a asp-controller="Logs" asp-action="GetLog" asp-route-logId="@item.Id">
+                            Click
+                        </a>
+                    </td>
+                    <td>
+                        @item.Action
+                    </td>
+                    <td>
+                        @item.TargetUserId
+                    </td>
+                    <td>
+                        @item.Details
+                    </td>
+                    <td>
+                        @item.Timestamp
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

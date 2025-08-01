@@ -1,0 +1,24 @@
+@model UserManagement.Models.User;
+
+<h2>User Details</h2>
+<dl class="row">
+    <dt>Forename:</dt>
+    <dd>@Model.Forename</dd>
+
+    <dt>Surname:</dt>
+    <dd>@Model.Surname</dd>
+
+    <dt>Email:</dt>
+    <dd>@Model.Email</dd>
+
+    <dt>Date of Birth:</dt>
+    <dd>@Model.DateOfBirth.ToString("dd/MM/yyyy")</dd>
+
+    <dt>Account Active:</dt>
+    <dd>@(Model.IsActive ? "Yes" : "No")</dd>
+</dl>
+
+<h2>User Logs</h2>
+
+<a class="btn btn-info" asp-controller="Logs" asp-action="List" asp-route-userId="@Model.Id">View Logs</a>
+<a class="btn btn-warning" asp-controller="Users" asp-action="Edit" asp-route-id="@Model.Id">Edit User</a>
